@@ -24,14 +24,14 @@ const saveCounters = () => {
 app.get("/", (reg, res) => {
   counters["/"]++;
   saveCounters();
-  res.send('<h1>Корневая страница</h1> <a href="/about">Перейти на страницу about</a>');
+  res.send(`<h1>Корневая страница</h1> <h2>Просмотров: ${counters['/']}</h2> <a href="/about">Перейти на страницу about</a>`);
   
 });
 
 app.get("/about", (reg, res) => {
   counters["/about"]++;
   saveCounters();
-  res.send('<h1>Страница about</h1> <a href="/">Перейти на корневую страницу</a>');
+  res.send(`<h1>Страница about</h1> <h2>Просмотров: ${counters['/about']}</h2> <a href="/">Перейти на корневую страницу</a>`);
 });
 
 loadCounters();
